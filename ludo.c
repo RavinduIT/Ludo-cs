@@ -9,6 +9,6 @@ int main(){
 	intro();
 	FirstPlayer();
 	begining();
-
+	// NEW
 	return 0;
 }
