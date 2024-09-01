@@ -129,7 +129,7 @@ void movePieceFromBaseToBoard(Board* board, int playerColor) {
         }
     }
     // Move the piece to the starting position
-    board->players[playerColor].pieces[pieceIndex].position = playerColor * 13;
+    board->players[playerColor].pieces[pieceIndex].position = (playerColor * 13)+2;
 
     // Coin toss to determine direction
     int coinToss = rand() % 2;
@@ -154,7 +154,6 @@ void movePieceFromBaseToBoard(Board* board, int playerColor) {
     printf("] player now has %d/4 pieces on the board and %d/4 pieces on the base.\n", 
            piecesHome, piecesOnBase);
 }
-
 int generateRandomEmptyCell(Board* board) {
     int emptyCells[BOARD_SIZE];
     int emptyCount = 0;
@@ -174,8 +173,6 @@ int generateRandomEmptyCell(Board* board) {
     // If no empty cells, return -1 or handle this case as needed
     return -1;
 }
-
-
 void updateMysteryCell(Board* board, int currentRound) {
     if (currentRound == 2) {
         // Spawn mystery cell for the first time after two rounds
@@ -247,7 +244,6 @@ void triggerMysteryCell(Board* board, int playerColor, int pieceIndex) {
             break;
     }
 }
-
 int movePieceOnBoard(Board* board, int playerColor, int pieceIndex, int diceRoll) {
     Piece* piece = &board->players[playerColor].pieces[pieceIndex];
     int startingPoint = (playerColor * 13 + 2) % BOARD_SIZE;
@@ -278,7 +274,7 @@ int movePieceOnBoard(Board* board, int playerColor, int pieceIndex, int diceRoll
             if (piece->direction == 1) {
                 stepsIntoHomePath = (newPosition - approachCell + BOARD_SIZE) % BOARD_SIZE;
             } else {
-                stepsIntoHomePath = (newPosition - approachCell + BOARD_SIZE) % BOARD_SIZE - 4;
+                stepsIntoHomePath = (approachCell - newPosition + BOARD_SIZE) % BOARD_SIZE;
             }
             
             if (stepsIntoHomePath > 0 && stepsIntoHomePath <= HOME_PATH_SIZE) {
@@ -291,8 +287,34 @@ int movePieceOnBoard(Board* board, int playerColor, int pieceIndex, int diceRoll
 
     // Move on the main board
     if (piece->position < BOARD_SIZE) {
+        // Check for capture
+        for (int i = 0; i < 4; i++) {
+            if (i != playerColor) {
+                for (int j = 0; j < PIECES_PER_PLAYER; j++) {
+                    if (board->players[i].pieces[j].position == newPosition) {
+                        // Capture opponent's piece
+                        board->players[i].pieces[j].position = -1;  // Send back to base
+                        piece->captures++;
+                        printf("Player ");
+                        PrintPlayer(playerColor);
+                        printf(" captures a piece of Player ");
+                        PrintPlayer(i);
+                        printf("\n");
+                        break;
+                    }
+                }
+            }
+        }
+
         piece->position = newPosition;
         printf("Piece moves to position %d on the main board\n", newPosition);
+
+        // Check if landed on mystery cell
+        if (newPosition == board->mystery_cell_position) {
+            printf("Piece has landed on a mystery cell!\n");
+            triggerMysteryCell(board, playerColor, pieceIndex);
+        }
+
         return 1;  // Successful move on main board
     } else if (newPosition < BOARD_SIZE + (playerColor * HOME_PATH_SIZE) + HOME_PATH_SIZE) {
         piece->position = newPosition;
@@ -361,33 +383,40 @@ void determineWinner(Board* board) {
 }
 void game(Board* board) {
     int round = 1;
-    while (!allPiecesHome(board)) {
-        printf("\n--- Round %d ---\n", round);
-        updateMysteryCell(board, round);
+   
+    printf("\n--- Round %d ---\n", round);
+    updateMysteryCell(board, round);
 
-        for (int i = 0; i < 4; i++) {
-            int currentPlayer = order[i];
-            int rollCount = 0;
-            int continueTurn = 1;
+    for (int i = 0; i < 4; i++) {
+        int currentPlayer = order[i];
+        int rollCount = 0;
+        int continueTurn = 1;
 
-            while (continueTurn && rollCount < 3) {
-                rollCount++;
-                int diceValue = RollDice();
-                PrintPlayer(currentPlayer);
-                printf(" player rolls a %d \n", diceValue);
+        while (continueTurn && rollCount < 3) {
+            rollCount++;
+            int diceValue = RollDice();
+            PrintPlayer(currentPlayer);
+            printf(" player rolls a %d \n", diceValue);
 
-                int moved = 0;
+            int moved = 0;
+            int piecesOnBoard = PIECES_PER_PLAYER - piecesInBase(board, currentPlayer);
 
-                if (diceValue == 6 && validBaseMove(board, currentPlayer)) {
-                    movePieceFromBaseToBoard(board, currentPlayer);
-                    moved = 1;
-                    if (rollCount < 3) {
-                        printf("Player gets another roll for rolling a 6!\n");
-                        continue;
-                    }
+            if (diceValue == 6 && validBaseMove(board, currentPlayer)) {
+                movePieceFromBaseToBoard(board, currentPlayer);
+                moved = 1;
+                if (rollCount < 3) {
+                    printf("Player gets another roll for rolling a 6!\n");
+                    continue;
                 }
+            }
 
-                if (!moved) {
+            if (!moved) {
+                if (piecesOnBoard == 0 && diceValue != 6) {
+                    printf("No valid moves for Player ");
+                    PrintPlayer(currentPlayer);
+                    printf(". No pieces on the board and didn't roll a 6.\n");
+                    continueTurn = 0;
+                } else {
                     for (int j = 0; j < PIECES_PER_PLAYER; j++) {
                         int moveResult = movePieceToHome(board, currentPlayer, j, diceValue);
                         if (moveResult == 1) {
@@ -403,28 +432,27 @@ void game(Board* board) {
                         }
                     }
                 }
+            }
 
-                if (!moved) {
-                    printf("No valid moves for Player ");
-                    PrintPlayer(currentPlayer);
-                    printf(".\n");
-                    continueTurn = 0;
-                }
+            if (!moved && piecesOnBoard > 0) {
+                printf("No valid moves for Player ");
+                PrintPlayer(currentPlayer);
+                printf(".\n");
+                continueTurn = 0;
+            }
 
-                if (allPiecesHome(board)) {
-                    determineWinner(board);
-                    return;
-                }
+            if (allPiecesHome(board)) {
+                determineWinner(board);
+                return;
+            }
 
-                if (rollCount == 3) {
-                    continueTurn = 0;
-                }
+            if (rollCount == 3) {
+                continueTurn = 0;
             }
         }
         round++;
     }
 }
-
 int allPiecesHome(Board* board) {
     for (int i = 0; i < PLAYER_COUNT; i++) {
         for (int j = 0; j < PIECES_PER_PLAYER; j++) {

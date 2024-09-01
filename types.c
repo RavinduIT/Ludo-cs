@@ -10,15 +10,15 @@
 
 // Structure for a game piece
 typedef struct {
-    int color;  // 0: Red, 1: Green, 2: Yellow, 3: Blue
-    int position;  // -1 for base, 0-51 for main board, 52-56 for home path
-    int direction;  // 1 for clockwise, -1 for counterclockwise
-    int captures;  // Number of opponent pieces captured
-    int energized;  // 1 if energized, 0 otherwise
-    int energizedRounds;  // Number of rounds remaining for energized effect
-    int sick;  // 1 if sick, 0 otherwise
-    int sickRounds;  // Number of rounds remaining for sick effect
-    int originalDirection;  // To remember original direction when part of a block
+    int color;  
+    int position; 
+    int direction; 
+    int captures; 
+    int energized;  
+    int energizedRounds; 
+    int sick;  
+    int sickRounds; 
+    int originalDirection; 
 } Piece;
 
 // Structure for a player
