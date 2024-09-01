@@ -127,156 +127,176 @@ void movePieceFromBaseToBoard(Board* board, int playerColor) {
             break;
         }
     }
-
-    if (pieceIndex == -1) {
-        printf("Error: No pieces in base for player ");
-        PrintPlayer(playerColor);
-        printf("\n");
-        return;
-    }
-
     // Move the piece to the starting position
     board->players[playerColor].pieces[pieceIndex].position = playerColor * 13;
 
-    // Print the move
+    // Coin toss to determine direction
+    int coinToss = rand() % 2;
+    int direction = (coinToss == 0) ? 1 : -1;
+    board->players[playerColor].pieces[pieceIndex].direction = direction;
+    board->players[playerColor].pieces[pieceIndex].originalDirection = direction;
+
+    // Print the move and direction
     printf("[Color ");
     PrintPlayer(playerColor);
-    printf("] player moves piece %d to the starting point.\n", pieceIndex + 1);
+    printf("] player moves piece %d to the starting point (position %d).\n", 
+           pieceIndex + 1, board->players[playerColor].pieces[pieceIndex].position);
+    printf("Coin toss result: Moving %s\n", (direction == 1) ? "clockwise" : "counter-clockwise");
 
     // Update and print the new base/board status
     int piecesOnBase = piecesInBase(board, playerColor);
     printf("[Color ");
     PrintPlayer(playerColor);
     printf("] player now has %d/4 pieces on the board and %d/4 pieces on the base.\n", 
-           PIECES_PER_PLAYER - piecesOnBase, piecesOnBase);
+           PIECES_PER_PLAYER - piecesInBase, piecesInBase);
+}
 
-    // Set the direction if it's not already set
-    if (board->players[playerColor].pieces[pieceIndex].direction == 0) {
-        board->players[playerColor].pieces[pieceIndex].direction = (rand() % 2 == 0) ? 1 : -1;
-        printf("Piece direction set to %s\n", 
-               (board->players[playerColor].pieces[pieceIndex].direction == 1) ? "clockwise" : "counter-clockwise");
+int generateRandomEmptyCell(Board* board) {
+    int emptyCells[BOARD_SIZE];
+    int emptyCount = 0;
+
+    // Find all empty cells
+    for (int i = 0; i < BOARD_SIZE; i++) {
+        if (board->main_path[i] == 0) {
+            emptyCells[emptyCount++] = i;
+        }
+    }
+
+    // If there are empty cells, choose one randomly
+    if (emptyCount > 0) {
+        return emptyCells[rand() % emptyCount];
+    }
+
+    // If no empty cells, return -1 or handle this case as needed
+    return -1;
+}
+void updateMysteryCell(Board* board, int currentRound) {
+    if (currentRound == 2) {
+        // Spawn mystery cell for the first time after two rounds
+        board->mystery_cell_position = generateRandomEmptyCell(board);
+        board->mystery_cell_rounds = 4;
+    } else if (board->mystery_cell_rounds > 0) {
+        board->mystery_cell_rounds--;
+    } else {
+        // Respawn mystery cell at a new location
+        int newPosition;
+        do {
+            newPosition = generateRandomEmptyCell(board);
+        } while (newPosition == board->mystery_cell_position);
+        
+        board->mystery_cell_position = newPosition;
+        board->mystery_cell_rounds = 4;
     }
 }
+void triggerMysteryCell(Board* board, int playerColor, int pieceIndex) {
+    printf("Mystery cell triggered for Player ");
+    PrintPlayer(playerColor);
+    printf(", Piece %d!\n", pieceIndex + 1);
+
+    // Randomly select one of the six teleport options
+    int teleportOption = rand() % 6;
+    Piece* piece = &board->players[playerColor].pieces[pieceIndex];
+
+    switch (teleportOption) {
+        case 0: // Bhawana (9th cell from Yellow approach)
+            piece->position = (0 + 9) % BOARD_SIZE;
+            printf("Teleported to Bhawana\n");
+            // Implement Bhawana effect (Rule CS-12)
+            if (rand() % 2 == 0) {
+                piece->energized = 1;
+                piece->energizedRounds = 4;
+                printf("Piece is energized for 4 rounds\n");
+            } else {
+                piece->sick = 1;
+                piece->sickRounds = 4;
+                printf("Piece is sick for 4 rounds\n");
+            }
+            break;
+        case 1: // Kotuwa (27th cell from Yellow approach)
+            piece->position = (0 + 27) % BOARD_SIZE;
+            printf("Teleported to Kotuwa\n");
+            break;
+        case 2: // Pita-Kotuwa (46th cell from Yellow approach)
+            piece->position = (0 + 46) % BOARD_SIZE;
+            printf("Teleported to Pita-Kotuwa\n");
+            if (piece->direction == 1) {
+                piece->direction = -1;
+                printf("Direction changed to counter-clockwise\n");
+            } else {
+                piece->position = (0 + 27) % BOARD_SIZE;
+                printf("Teleported to Kotuwa\n");
+            }
+            break;
+        case 3: // Base
+            piece->position = -1;
+            printf("Teleported to Base\n");
+            break;
+        case 4: // X of the piece color
+            piece->position = playerColor * 13;
+            printf("Teleported to starting point X\n");
+            break;
+        case 5: // Approach of the piece color
+            piece->position = ((playerColor * 13) - 1 + BOARD_SIZE) % BOARD_SIZE;
+            printf("Teleported to Approach cell\n");
+            break;
+    }
+}
+
 int movePieceOnBoard(Board* board, int playerColor, int pieceIndex, int diceRoll) {
     Piece* piece = &board->players[playerColor].pieces[pieceIndex];
-    
-    if (piece->position == -1) {
-        return 0; // Piece is in base, can't move on board
+    int startingPoint = (playerColor * 13 + 2) % BOARD_SIZE;
+    int approachCell = (playerColor * 13 - 1 + BOARD_SIZE) % BOARD_SIZE;
+
+    // Calculate new position
+    int newPosition;
+    if (piece->position < BOARD_SIZE) {
+        newPosition = (piece->position + diceRoll * piece->direction + BOARD_SIZE) % BOARD_SIZE;
+    } else {
+        newPosition = piece->position + diceRoll;
     }
 
-    int newPosition = (piece->position + diceRoll * piece->direction + BOARD_SIZE) % BOARD_SIZE;
+    // Check if the piece has completed a full round (for counterclockwise movement)
+    if (piece->direction == -1 && 
+        ((piece->position < startingPoint && newPosition >= startingPoint) || 
+         (piece->position > newPosition && newPosition >= startingPoint))) {
+        piece->captures++;  // Increment captures as a way to track rounds
+    }
 
     // Check if the piece can enter home path
-    int approachCell = ((playerColor * 13 - 1) + BOARD_SIZE) % BOARD_SIZE;
-    if ((piece->direction == 1 && newPosition > approachCell && piece->position <= approachCell) ||
-        (piece->direction == -1 && newPosition <= approachCell && piece->position > approachCell)) {
-        // Enter home path
-        int stepsIntoHomePath = (newPosition - approachCell + BOARD_SIZE) % BOARD_SIZE;
-        if (stepsIntoHomePath <= HOME_PATH_SIZE) {
-            piece->position = BOARD_SIZE + (playerColor * HOME_PATH_SIZE) + stepsIntoHomePath - 1;
-            printf("Piece enters home path at position %d\n", piece->position);
-            return 1; // Successful move
-        } else {
-            printf("Piece cannot enter home path, too many steps\n");
-            return 0; // Move not possible
-        }
-    }
-
-    // Check for captures and update position
-    for (int p = 0; p < PLAYER_COUNT; p++) {
-        if (p != playerColor) {
-            for (int pc = 0; pc < PIECES_PER_PLAYER; pc++) {
-                if (board->players[p].pieces[pc].position == newPosition) {
-                    board->players[p].pieces[pc].position = -1; // Send back to base
-                    piece->captures++;
-                    printf("Piece captures a piece from Player ");
-                    PrintPlayer(p);
-                    printf("!\n");
-                }
-            }
-        }
-    }
-
-    piece->position = newPosition;
-    printf("Piece moves to position %d\n", newPosition);
-
-    return 1; // Successful move
-}
-
-
-void playTurn(Board* board) {
-    int round = 1;
-    int gameEnded = 0;
-    int maxRounds = 5000; // Set a maximum number of rounds to prevent infinite loops
-
-    while (!gameEnded && round <= maxRounds) {
-        printf("\n--- Round %d ---\n", round);
-        for (int i = 0; i < 4; i++) {
-            int currentPlayer = order[i];
-            int continueTurn = 1;
-            int consecutiveSixes = 0;
+    if (piece->position < BOARD_SIZE && piece->captures > 0) {
+        if ((piece->direction == 1 && newPosition > approachCell && piece->position <= approachCell) ||
+            (piece->direction == -1 && piece->captures >= 2 && 
+             newPosition <= approachCell && piece->position > approachCell)) {
             
-            while (continueTurn && consecutiveSixes < 3) {
-                int diceRoll = RollDice();
-                int moved = 0;
-
-                printf("\nPlayer ");
-                PrintPlayer(currentPlayer);
-                printf(" rolls %d\n", diceRoll);
-
-                if (diceRoll == 6) {
-                    consecutiveSixes++;
-                    if (consecutiveSixes == 3) {
-                        printf("Three consecutive sixes! Turn ends.\n");
-                        break;
-                    }
-                } else {
-                    consecutiveSixes = 0;
-                }
-
-                if (diceRoll == 6 && validBaseMove(board, currentPlayer)) {
-                    movePieceFromBaseToBoard(board, currentPlayer);
-                    moved = 1;
-                    printf("Player gets another turn for rolling a 6!\n");
-                    continue;
-                }
-
-                if (!moved) {
-                    for (int j = 0; j < PIECES_PER_PLAYER; j++) {
-                        if (movePieceOnBoard(board, currentPlayer, j, diceRoll)) {
-                            moved = 1;
-                            break;
-                        }
-                    }
-                }
-
-                if (!moved) {
-                    printf("No valid moves for Player ");
-                    PrintPlayer(currentPlayer);
-                    printf(".\n");
-                }
-
-                continueTurn = (diceRoll == 6 && moved);
-
-                if (allPiecesHome(board)) {
-                    gameEnded = 1;
-                    break;
-                }
+            int stepsIntoHomePath;
+            if (piece->direction == 1) {
+                stepsIntoHomePath = (newPosition - approachCell + BOARD_SIZE) % BOARD_SIZE;
+            } else {
+                stepsIntoHomePath = (newPosition - approachCell + BOARD_SIZE) % BOARD_SIZE - 4;
             }
-
-            if (gameEnded) break;
+            
+            if (stepsIntoHomePath > 0 && stepsIntoHomePath <= HOME_PATH_SIZE) {
+                piece->position = BOARD_SIZE + (playerColor * HOME_PATH_SIZE) + stepsIntoHomePath - 1;
+                printf("Piece enters home path at position %d\n", stepsIntoHomePath);
+                return 1;  // Successful move into home path
+            }
         }
-        round++;
     }
 
-    if (round > maxRounds) {
-        printf("Game ended due to reaching maximum number of rounds.\n");
+    // Move on the main board
+    if (piece->position < BOARD_SIZE) {
+        piece->position = newPosition;
+        printf("Piece moves to position %d on the main board\n", newPosition);
+        return 1;  // Successful move on main board
+    } else if (newPosition < BOARD_SIZE + (playerColor * HOME_PATH_SIZE) + HOME_PATH_SIZE) {
+        piece->position = newPosition;
+        printf("Piece moves to position %d in home path\n", newPosition - BOARD_SIZE - (playerColor * HOME_PATH_SIZE));
+        return 1;  // Successful move in home path
     }
 
-    determineWinner(board);
+    printf("Invalid move\n");
+    return 0;  // Move not possible
 }
-
-
 void determineWinner(Board* board) {
     int placings[PLAYER_COUNT] = {0};
     int currentPlace = 1;
@@ -286,7 +306,7 @@ void determineWinner(Board* board) {
             if (placings[i] == 0) {
                 int piecesHome = 0;
                 for (int j = 0; j < PIECES_PER_PLAYER; j++) {
-                    if (board->players[i].pieces[j].position >= BOARD_SIZE) {
+                    if (board->players[i].pieces[j].position >= BOARD_SIZE + (i * HOME_PATH_SIZE) + HOME_PATH_SIZE - 1) {
                         piecesHome++;
                     }
                 }
@@ -308,73 +328,87 @@ void determineWinner(Board* board) {
         }
     }
 }
+void game(Board* board) {
+    int round = 1;
+    while (1) {
+        printf("\n--- Round %d ---\n", round);
+        updateMysteryCell(board, round);
 
-int allPiecesHome(Board* board) {
-    for (int i = 0; i < PLAYER_COUNT; i++) {
-        int piecesHome = 0;
-        for (int j = 0; j < PIECES_PER_PLAYER; j++) {
-            if (board->players[i].pieces[j].position >= BOARD_SIZE) {
-                piecesHome++;
+        for (int i = 0; i < 4; i++) {
+            int currentPlayer = order[i];
+            int rollCount = 0;
+            int continueTurn = 1;
+
+            while (continueTurn && rollCount < 3) {
+                rollCount++;
+                int diceValue = RollDice();
+                PrintPlayer(currentPlayer);
+                printf(" player rolls a %d (Roll %d/3)\n", diceValue, rollCount);
+
+                int moved = 0;
+
+                if (diceValue == 6 && validBaseMove(board, currentPlayer)) {
+                    movePieceFromBaseToBoard(board, currentPlayer);
+                    moved = 1;
+                    if (rollCount < 3) {
+                        printf("Player gets another roll for rolling a 6!\n");
+                        continue;
+                    }
+                }
+
+                if (!moved) {
+                    for (int j = 0; j < PIECES_PER_PLAYER; j++) {
+                        int moveResult = movePieceToHome(board, currentPlayer, j, diceValue);
+                        if (moveResult == 1) {
+                            moved = 1;
+                            continueTurn = 0;
+                            break;
+                        } else if (moveResult == 2) {
+                            moved = 1;
+                            if (rollCount < 3) {
+                                printf("Player gets another roll for capturing!\n");
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (!moved) {
+                    printf("No valid moves for Player ");
+                    PrintPlayer(currentPlayer);
+                    printf(".\n");
+                    continueTurn = 0;
+                }
+
+                if (allPiecesHome(board)) {
+                    determineWinner(board);
+                    return;
+                }
+
+                if (rollCount == 3) {
+                    continueTurn = 0;
+                }
             }
         }
-        if (piecesHome == PIECES_PER_PLAYER) {
-            return 1;  // All pieces of a player are home
-        }
-    }
-    return 0;  // Not all pieces of any player are home yet
-}
-
-
-void triggerMysteryCell(Board* board, int playerColor, int pieceIndex) {
-    printf("Mystery cell triggered for Player ");
-    PrintPlayer(playerColor);
-    printf(", Piece %d!\n", pieceIndex + 1);
-
-    // Randomly select one of the six teleport options
-    int teleportOption = rand() % 6;
-    Piece* piece = &board->players[playerColor].pieces[pieceIndex];
-
-    switch (teleportOption) {
-        case 0: // Bhawana (9th cell from Yellow approach)
-            piece->position = (0 + 9) % BOARD_SIZE;
-            printf("Teleported to Bhawana\n");
-            // Implement Bhawana effect (Rule CS-12)
-            if (rand() % 2 == 0) {
-                piece->energized = 1;
-                piece->energizedRounds = 4;
-                printf("Piece is energized for 4 rounds\n");
-            } else {
-                piece->sick = 1;
-                piece->sickRounds = 2;
-                printf("Piece is sick for 2 rounds\n");
-            }
-            break;
-        case 1: // Kotuwa (27th cell from Yellow approach)
-            piece->position = (0 + 27) % BOARD_SIZE;
-            printf("Teleported to Kotuwa\n");
-            break;
-        case 2: // Pita-Kotuwa (46th cell from Yellow approach)
-            piece->position = (0 + 46) % BOARD_SIZE;
-            printf("Teleported to Pita-Kotuwa\n");
-            break;
-        case 3: // Base
-            piece->position = -1;
-            piece->direction = 0;  // Reset direction
-            piece->originalDirection = 0;
-            printf("Teleported to Base\n");
-            break;
-        case 4: // X of the piece color
-            piece->position = playerColor * 13;
-            // Determine new direction
-            piece->direction = (rand() % 2 == 0) ? 1 : -1;
-            piece->originalDirection = piece->direction;
-            printf("Teleported to starting point X. New direction: %s\n", 
-                   piece->direction == 1 ? "Clockwise" : "Counter-clockwise");
-            break;
-        case 5: // Approach of the piece color
-            piece->position = ((playerColor * 13) - 1 + BOARD_SIZE) % BOARD_SIZE;
-            printf("Teleported to Approach cell\n");
-            break;
+        round++;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
