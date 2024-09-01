@@ -451,15 +451,23 @@ void game(Board* board) {
             }
         }
         round++;
+
     }
+
+
 }
 int allPiecesHome(Board* board) {
     for (int i = 0; i < PLAYER_COUNT; i++) {
+        int playerPiecesHome = 1; // Assume all pieces are home for this player
         for (int j = 0; j < PIECES_PER_PLAYER; j++) {
-            if (board->players[i].pieces[j].position < BOARD_SIZE + (i * HOME_PATH_SIZE)) {
-                return 0; // If any piece is not home, return false
+            if (board->players[i].pieces[j].position < BOARD_SIZE + (i * HOME_PATH_SIZE) + HOME_PATH_SIZE - 1) {
+                playerPiecesHome = 0; // This piece is not home
+                break; // No need to check other pieces for this player
             }
         }
+        if (playerPiecesHome) {
+            return 1; // This player has all pieces home
+        }
     }
-    return 1; // All pieces are home
+    return 0; // No player has all pieces home
 }

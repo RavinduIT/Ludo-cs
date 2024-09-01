@@ -15,10 +15,16 @@ int main() {
     // Call the main game function
     while (!allPiecesHome(&board)) {
         game(&board);
+        
+        // Check if the game is over after each turn
+        if (allPiecesHome(&board)) {
+            printf("\n--- Game Over ---\n");
+            determineWinner(&board);
+            break; 
+        }
     }
-
-    // Determine and display the winner
-    determineWinner(&board);
+    
+    printf("\nThank you for playing Ludo!\n");
     
     return 0;
-};
+}
