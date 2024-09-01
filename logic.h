@@ -26,5 +26,5 @@ int movePieceOnBoard(Board* board, int playerColor, int pieceIndex, int diceRoll
 int allPiecesHome(Board* board);
 int movePieceToHome(Board* board, int playerColor, int pieceIndex, int diceRoll);
 void determineWinner(Board* board);
-void game(Board* board);
+void game(Board* board, int round);
 #endif

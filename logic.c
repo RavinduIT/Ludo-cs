@@ -381,10 +381,8 @@ void determineWinner(Board* board) {
         }
     }
 }
-void game(Board* board) {
-    int round = 1;
-   
-    printf("\n--- Round %d ---\n", round);
+void game(Board* board, int round) {   
+    
     updateMysteryCell(board, round);
 
     for (int i = 0; i < 4; i++) {
@@ -450,8 +448,6 @@ void game(Board* board) {
                 continueTurn = 0;
             }
         }
-        round++;
-
     }
 
 

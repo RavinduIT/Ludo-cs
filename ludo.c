@@ -4,6 +4,7 @@
 #include "logic.h"
 
 int main() {
+    int round = 1;
     srand(time(NULL));  // Initialize random seed
     
     Board board;
@@ -14,7 +15,9 @@ int main() {
 
     // Call the main game function
     while (!allPiecesHome(&board)) {
-        game(&board);
+        printf("\n--- Round %d ---\n", round);
+        round++;
+        game(&board, round);
         
         // Check if the game is over after each turn
         if (allPiecesHome(&board)) {
