@@ -1,0 +1,1338 @@
+The yellow player has four (04) pieces named Y1, Y2, Y3, and Y4
+The blue player has four (04) pieces named B1, B2, B3, and B4
+The red player has four (04) pieces named R1, R2, R3, and R4
+The green player has four (04) pieces named G1,G2, G3, and G4
+Yellow Player rolls 4
+Blue Player rolls 6
+Red Player rolls 4
+Green Player rolls 3
+Player with highest roll is Blue with a roll of 6
+The order of Blue, Red, Green and Yellow
+Starting game loop
+
+--- Round 1 ---
+
+Player Blue rolls 1
+No valid moves for Player Blue.
+
+Player Red rolls 3
+No valid moves for Player Red.
+
+Player Green rolls 4
+No valid moves for Player Green.
+
+Player Yellow rolls 6
+[Color Yellow] player moves piece 1 to the starting point.
+[Color Yellow] player now has 1/4 pieces on the board and 3/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Yellow rolls 3
+Piece moves to position 3
+
+--- Round 2 ---
+
+Player Blue rolls 1
+No valid moves for Player Blue.
+
+Player Red rolls 3
+No valid moves for Player Red.
+
+Player Green rolls 5
+No valid moves for Player Green.
+
+Player Yellow rolls 3
+Piece moves to position 6
+
+--- Round 3 ---
+
+Player Blue rolls 6
+[Color Blue] player moves piece 1 to the starting point.
+[Color Blue] player now has 1/4 pieces on the board and 3/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Blue rolls 3
+Piece cannot enter home path, too many steps
+No valid moves for Player Blue.
+
+Player Red rolls 2
+No valid moves for Player Red.
+
+Player Green rolls 2
+No valid moves for Player Green.
+
+Player Yellow rolls 4
+Piece moves to position 10
+
+--- Round 4 ---
+
+Player Blue rolls 5
+Piece cannot enter home path, too many steps
+No valid moves for Player Blue.
+
+Player Red rolls 5
+No valid moves for Player Red.
+
+Player Green rolls 4
+No valid moves for Player Green.
+
+Player Yellow rolls 2
+Piece moves to position 12
+
+--- Round 5 ---
+
+Player Blue rolls 5
+Piece cannot enter home path, too many steps
+No valid moves for Player Blue.
+
+Player Red rolls 3
+No valid moves for Player Red.
+
+Player Green rolls 4
+No valid moves for Player Green.
+
+Player Yellow rolls 1
+Piece captures a piece from Player Blue!
+Piece moves to position 13
+
+--- Round 6 ---
+
+Player Blue rolls 5
+No valid moves for Player Blue.
+
+Player Red rolls 3
+No valid moves for Player Red.
+
+Player Green rolls 2
+No valid moves for Player Green.
+
+Player Yellow rolls 2
+Piece moves to position 15
+
+--- Round 7 ---
+
+Player Blue rolls 2
+No valid moves for Player Blue.
+
+Player Red rolls 5
+No valid moves for Player Red.
+
+Player Green rolls 1
+No valid moves for Player Green.
+
+Player Yellow rolls 3
+Piece moves to position 18
+
+--- Round 8 ---
+
+Player Blue rolls 5
+No valid moves for Player Blue.
+
+Player Red rolls 6
+[Color Red] player moves piece 1 to the starting point.
+[Color Red] player now has 1/4 pieces on the board and 3/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Red rolls 5
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 6
+[Color Green] player moves piece 1 to the starting point.
+[Color Green] player now has 1/4 pieces on the board and 3/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Green rolls 5
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 6
+[Color Yellow] player moves piece 2 to the starting point.
+[Color Yellow] player now has 2/4 pieces on the board and 2/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Yellow rolls 6
+[Color Yellow] player moves piece 3 to the starting point.
+[Color Yellow] player now has 3/4 pieces on the board and 1/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Yellow rolls 1
+Piece moves to position 19
+
+--- Round 9 ---
+
+Player Blue rolls 4
+No valid moves for Player Blue.
+
+Player Red rolls 1
+Piece enters home path at position 61
+
+Player Green rolls 4
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 1
+Piece moves to position 20
+
+--- Round 10 ---
+
+Player Blue rolls 2
+No valid moves for Player Blue.
+
+Player Red rolls 5
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 2
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 4
+Piece moves to position 24
+
+--- Round 11 ---
+
+Player Blue rolls 2
+No valid moves for Player Blue.
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 5
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 6
+[Color Yellow] player moves piece 4 to the starting point.
+[Color Yellow] player now has 4/4 pieces on the board and 0/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Yellow rolls 6
+Piece moves to position 30
+
+Player Yellow rolls 2
+Piece moves to position 32
+
+--- Round 12 ---
+
+Player Blue rolls 6
+[Color Blue] player moves piece 1 to the starting point.
+[Color Blue] player now has 1/4 pieces on the board and 3/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Blue rolls 2
+Piece cannot enter home path, too many steps
+No valid moves for Player Blue.
+
+Player Red rolls 4
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 6
+[Color Green] player moves piece 2 to the starting point.
+[Color Green] player now has 2/4 pieces on the board and 2/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Green rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 4
+Piece moves to position 36
+
+--- Round 13 ---
+
+Player Blue rolls 4
+Piece cannot enter home path, too many steps
+No valid moves for Player Blue.
+
+Player Red rolls 2
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 4
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 3
+Piece captures a piece from Player Green!
+Piece captures a piece from Player Green!
+Piece moves to position 39
+
+--- Round 14 ---
+
+Player Blue rolls 1
+Piece enters home path at position 56
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 6
+[Color Green] player moves piece 1 to the starting point.
+[Color Green] player now has 1/4 pieces on the board and 3/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Green rolls 5
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 2
+Piece moves to position 41
+
+--- Round 15 ---
+
+Player Blue rolls 6
+[Color Blue] player moves piece 2 to the starting point.
+[Color Blue] player now has 2/4 pieces on the board and 2/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Blue rolls 4
+Piece cannot enter home path, too many steps
+Piece moves to position 17
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 4
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 1
+Piece moves to position 42
+
+--- Round 16 ---
+
+Player Blue rolls 1
+Piece cannot enter home path, too many steps
+Piece moves to position 18
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 4
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 2
+Piece moves to position 44
+
+--- Round 17 ---
+
+Player Blue rolls 6
+[Color Blue] player moves piece 3 to the starting point.
+[Color Blue] player now has 3/4 pieces on the board and 1/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Blue rolls 3
+Piece cannot enter home path, too many steps
+Piece moves to position 21
+
+Player Red rolls 5
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 2
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 2
+Piece moves to position 46
+
+--- Round 18 ---
+
+Player Blue rolls 2
+Piece cannot enter home path, too many steps
+Piece moves to position 23
+
+Player Red rolls 4
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 5
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 3
+Piece moves to position 49
+
+--- Round 19 ---
+
+Player Blue rolls 5
+Piece moves to position 51
+
+Player Red rolls 4
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 5
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 6
+Piece moves to position 3
+
+Player Yellow rolls 6
+Piece moves to position 9
+
+Player Yellow rolls 4
+Piece captures a piece from Player Blue!
+Piece moves to position 13
+
+--- Round 20 ---
+
+Player Blue rolls 4
+Piece moves to position 47
+
+Player Red rolls 6
+[Color Red] player moves piece 2 to the starting point.
+[Color Red] player now has 2/4 pieces on the board and 2/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Red rolls 4
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 4
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 5
+Piece moves to position 18
+
+--- Round 21 ---
+
+Player Blue rolls 1
+Piece moves to position 46
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 4
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 2
+Piece moves to position 20
+
+--- Round 22 ---
+
+Player Blue rolls 5
+Piece moves to position 41
+
+Player Red rolls 5
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 6
+[Color Green] player moves piece 2 to the starting point.
+[Color Green] player now has 2/4 pieces on the board and 2/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Green rolls 4
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 1
+Piece moves to position 21
+
+--- Round 23 ---
+
+Player Blue rolls 3
+Piece moves to position 38
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 4
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 3
+Piece moves to position 24
+
+--- Round 24 ---
+
+Player Blue rolls 1
+Piece moves to position 37
+
+Player Red rolls 6
+[Color Red] player moves piece 3 to the starting point.
+[Color Red] player now has 3/4 pieces on the board and 1/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Red rolls 4
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 30
+
+Player Green rolls 6
+[Color Green] player moves piece 3 to the starting point.
+[Color Green] player now has 3/4 pieces on the board and 1/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Green rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 3
+Piece moves to position 27
+
+--- Round 25 ---
+
+Player Blue rolls 2
+Piece moves to position 35
+
+Player Red rolls 5
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece captures a piece from Player Blue!
+Piece moves to position 35
+
+Player Green rolls 6
+[Color Green] player moves piece 4 to the starting point.
+[Color Green] player now has 4/4 pieces on the board and 0/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Green rolls 5
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 3
+Piece moves to position 30
+
+--- Round 26 ---
+
+Player Blue rolls 5
+Piece moves to position 28
+
+Player Red rolls 2
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 37
+
+Player Green rolls 6
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 4
+Piece moves to position 34
+
+--- Round 27 ---
+
+Player Blue rolls 4
+Piece moves to position 32
+
+Player Red rolls 1
+Piece cannot enter home path, too many steps
+Piece enters home path at position 61
+
+Player Green rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 2
+Piece moves to position 36
+
+--- Round 28 ---
+
+Player Blue rolls 3
+Piece moves to position 35
+
+Player Red rolls 4
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 41
+
+Player Green rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 5
+Piece captures a piece from Player Red!
+Piece moves to position 41
+
+--- Round 29 ---
+
+Player Blue rolls 1
+Piece moves to position 36
+
+Player Red rolls 2
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 6
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 1
+Piece moves to position 42
+
+--- Round 30 ---
+
+Player Blue rolls 3
+Piece captures a piece from Player Green!
+Piece captures a piece from Player Green!
+Piece captures a piece from Player Green!
+Piece captures a piece from Player Green!
+Piece moves to position 39
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 5
+No valid moves for Player Green.
+
+Player Yellow rolls 5
+Piece moves to position 47
+
+--- Round 31 ---
+
+Player Blue rolls 1
+Piece moves to position 40
+
+Player Red rolls 4
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 3
+No valid moves for Player Green.
+
+Player Yellow rolls 1
+Piece moves to position 48
+
+--- Round 32 ---
+
+Player Blue rolls 4
+Piece moves to position 44
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 6
+[Color Green] player moves piece 1 to the starting point.
+[Color Green] player now has 1/4 pieces on the board and 3/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Green rolls 6
+[Color Green] player moves piece 2 to the starting point.
+[Color Green] player now has 2/4 pieces on the board and 2/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Green rolls 6
+Three consecutive sixes! Turn ends.
+
+Player Yellow rolls 4
+Piece moves to position 0
+
+--- Round 33 ---
+
+Player Blue rolls 2
+Piece moves to position 46
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 4
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 5
+Piece moves to position 5
+
+--- Round 34 ---
+
+Player Blue rolls 6
+[Color Blue] player moves piece 1 to the starting point.
+[Color Blue] player now has 2/4 pieces on the board and 2/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Blue rolls 5
+Piece cannot enter home path, too many steps
+Piece moves to position 51
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 6
+[Color Green] player moves piece 3 to the starting point.
+[Color Green] player now has 3/4 pieces on the board and 1/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Green rolls 6
+[Color Green] player moves piece 4 to the starting point.
+[Color Green] player now has 4/4 pieces on the board and 0/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Green rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 2
+Piece moves to position 7
+
+--- Round 35 ---
+
+Player Blue rolls 2
+Piece cannot enter home path, too many steps
+Piece moves to position 1
+
+Player Red rolls 6
+[Color Red] player moves piece 3 to the starting point.
+[Color Red] player now has 3/4 pieces on the board and 1/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Red rolls 2
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 28
+
+Player Green rolls 1
+Piece enters home path at position 66
+
+Player Yellow rolls 5
+Piece moves to position 12
+
+--- Round 36 ---
+
+Player Blue rolls 6
+[Color Blue] player moves piece 3 to the starting point.
+[Color Blue] player now has 3/4 pieces on the board and 1/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Blue rolls 3
+Piece cannot enter home path, too many steps
+Piece moves to position 4
+
+Player Red rolls 1
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 29
+
+Player Green rolls 2
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 2
+Piece moves to position 14
+
+--- Round 37 ---
+
+Player Blue rolls 2
+Piece cannot enter home path, too many steps
+Piece moves to position 6
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 32
+
+Player Green rolls 2
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 6
+Piece moves to position 20
+
+Player Yellow rolls 4
+Piece moves to position 24
+
+--- Round 38 ---
+
+Player Blue rolls 2
+Piece cannot enter home path, too many steps
+Piece moves to position 8
+
+Player Red rolls 5
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 37
+
+Player Green rolls 2
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 1
+Piece moves to position 25
+
+--- Round 39 ---
+
+Player Blue rolls 1
+Piece enters home path at position 56
+
+Player Red rolls 1
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 38
+
+Player Green rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 4
+Piece moves to position 29
+
+--- Round 40 ---
+
+Player Blue rolls 4
+Piece cannot enter home path, too many steps
+Piece moves to position 12
+
+Player Red rolls 1
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece captures a piece from Player Green!
+Piece captures a piece from Player Green!
+Piece captures a piece from Player Green!
+Piece moves to position 39
+
+Player Green rolls 6
+[Color Green] player moves piece 2 to the starting point.
+[Color Green] player now has 2/4 pieces on the board and 2/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Green rolls 6
+[Color Green] player moves piece 3 to the starting point.
+[Color Green] player now has 3/4 pieces on the board and 1/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Green rolls 4
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 5
+Piece moves to position 34
+
+--- Round 41 ---
+
+Player Blue rolls 3
+Piece cannot enter home path, too many steps
+Piece enters home path at position 59
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 42
+
+Player Green rolls 6
+[Color Green] player moves piece 4 to the starting point.
+[Color Green] player now has 4/4 pieces on the board and 0/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Green rolls 2
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 2
+Piece moves to position 36
+
+--- Round 42 ---
+
+Player Blue rolls 6
+[Color Blue] player moves piece 4 to the starting point.
+[Color Blue] player now has 4/4 pieces on the board and 0/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Blue rolls 6
+Piece moves to position 50
+
+Player Blue rolls 2
+Piece moves to position 48
+
+Player Red rolls 1
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 43
+
+Player Green rolls 5
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 1
+Piece moves to position 37
+
+--- Round 43 ---
+
+Player Blue rolls 6
+Piece moves to position 42
+
+Player Blue rolls 6
+Piece moves to position 36
+
+Player Blue rolls 2
+Piece moves to position 34
+
+Player Red rolls 5
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 48
+
+Player Green rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 5
+Piece moves to position 42
+
+--- Round 44 ---
+
+Player Blue rolls 6
+Piece moves to position 28
+
+Player Blue rolls 1
+Piece moves to position 27
+
+Player Red rolls 4
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece captures a piece from Player Yellow!
+Piece captures a piece from Player Yellow!
+Piece captures a piece from Player Yellow!
+Piece moves to position 0
+
+Player Green rolls 4
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 1
+Piece moves to position 43
+
+--- Round 45 ---
+
+Player Blue rolls 5
+Piece moves to position 22
+
+Player Red rolls 1
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 1
+
+Player Green rolls 2
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 2
+Piece moves to position 45
+
+--- Round 46 ---
+
+Player Blue rolls 5
+Piece moves to position 17
+
+Player Red rolls 1
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 2
+
+Player Green rolls 5
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 2
+Piece moves to position 47
+
+--- Round 47 ---
+
+Player Blue rolls 3
+Piece moves to position 14
+
+Player Red rolls 1
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 3
+
+Player Green rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 6
+[Color Yellow] player moves piece 2 to the starting point.
+[Color Yellow] player now has 2/4 pieces on the board and 2/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Yellow rolls 6
+[Color Yellow] player moves piece 3 to the starting point.
+[Color Yellow] player now has 3/4 pieces on the board and 1/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Yellow rolls 4
+Piece moves to position 51
+
+--- Round 48 ---
+
+Player Blue rolls 6
+Piece cannot enter home path, too many steps
+Piece moves to position 13
+
+Player Blue rolls 4
+Piece cannot enter home path, too many steps
+Piece moves to position 17
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 6
+
+Player Green rolls 4
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 2
+Piece moves to position 1
+
+--- Round 49 ---
+
+Player Blue rolls 4
+Piece cannot enter home path, too many steps
+Piece moves to position 21
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 9
+
+Player Green rolls 5
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 5
+Piece moves to position 6
+
+--- Round 50 ---
+
+Player Blue rolls 5
+Piece cannot enter home path, too many steps
+Piece moves to position 26
+
+Player Red rolls 1
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 10
+
+Player Green rolls 1
+Piece cannot enter home path, too many steps
+Piece enters home path at position 66
+
+Player Yellow rolls 4
+Piece captures a piece from Player Red!
+Piece moves to position 10
+
+--- Round 51 ---
+
+Player Blue rolls 5
+Piece cannot enter home path, too many steps
+Piece moves to position 31
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 5
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 6
+[Color Yellow] player moves piece 4 to the starting point.
+[Color Yellow] player now has 4/4 pieces on the board and 0/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Yellow rolls 1
+Piece moves to position 11
+
+--- Round 52 ---
+
+Player Blue rolls 3
+Piece cannot enter home path, too many steps
+Piece moves to position 34
+
+Player Red rolls 5
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 6
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 1
+Piece moves to position 12
+
+--- Round 53 ---
+
+Player Blue rolls 4
+Piece cannot enter home path, too many steps
+Piece moves to position 38
+
+Player Red rolls 2
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Red.
+
+Player Green rolls 1
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece enters home path at position 66
+
+Player Yellow rolls 6
+Piece moves to position 18
+
+Player Yellow rolls 1
+Piece moves to position 19
+
+--- Round 54 ---
+
+Player Blue rolls 3
+Piece cannot enter home path, too many steps
+Piece moves to position 41
+
+Player Red rolls 6
+[Color Red] player moves piece 3 to the starting point.
+[Color Red] player now has 3/4 pieces on the board and 1/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Red rolls 6
+[Color Red] player moves piece 4 to the starting point.
+[Color Red] player now has 4/4 pieces on the board and 0/4 pieces on the base.
+Player gets another turn for rolling a 6!
+
+Player Red rolls 6
+Three consecutive sixes! Turn ends.
+
+Player Green rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 1
+Piece moves to position 20
+
+--- Round 55 ---
+
+Player Blue rolls 3
+Piece cannot enter home path, too many steps
+Piece moves to position 44
+
+Player Red rolls 4
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 30
+
+Player Green rolls 2
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 4
+Piece moves to position 24
+
+--- Round 56 ---
+
+Player Blue rolls 6
+Piece cannot enter home path, too many steps
+Piece moves to position 50
+
+Player Blue rolls 4
+Piece cannot enter home path, too many steps
+Piece moves to position 2
+
+Player Red rolls 6
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 36
+
+Player Red rolls 2
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 38
+
+Player Green rolls 4
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 4
+Piece moves to position 28
+
+--- Round 57 ---
+
+Player Blue rolls 3
+Piece cannot enter home path, too many steps
+Piece moves to position 5
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 41
+
+Player Green rolls 6
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 1
+Piece moves to position 29
+
+--- Round 58 ---
+
+Player Blue rolls 6
+Piece cannot enter home path, too many steps
+Piece moves to position 11
+
+Player Blue rolls 4
+Piece cannot enter home path, too many steps
+Piece enters home path at position 59
+
+Player Red rolls 4
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 45
+
+Player Green rolls 2
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 1
+Piece moves to position 30
+
+--- Round 59 ---
+
+Player Blue rolls 2
+Piece enters home path at position 56
+
+Player Red rolls 5
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 50
+
+Player Green rolls 3
+logic.c: In function ‘playTurn’:
+logic.c:377:1: error: expected declaration or statement at end of i
+Player Yellow rolls 2
+Piece moves to position 32
+
+--- Round 60 ---
+
+Player Blue rolls 3
+Piece cannot enter home path, too many steps
+Piece moves to position 10
+
+Player Red rolls 3
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece moves to position 1
+
+Player Green rolls 2
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+Piece cannot enter home path, too many steps
+No valid moves for Player Green.
+
+Player Yellow rolls 2
+Piece moves to position 34
+
+--- Round 61 ---
+
+Player Blue ro
