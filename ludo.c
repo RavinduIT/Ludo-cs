@@ -2,13 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include "logic.h"
-#include "types.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include "logic.h"
-#include "types.h"
 
 int main() {
     srand(time(NULL));  // Initialize random seed
@@ -19,11 +12,13 @@ int main() {
     intro();  // Display game introduction
     FirstPlayer();  // Determine the first player and playing order
 
-    printf("Starting game loop\n");
-    playTurn(&board);
-    printf("Game loop ended\n");
+    // Call the main game function
+    while (!allPiecesHome(&board)) {
+        game(&board);
+    }
 
+    // Determine and display the winner
     determineWinner(&board);
     
     return 0;
-}
+};

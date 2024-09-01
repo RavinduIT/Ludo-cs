@@ -8,6 +8,7 @@
 int maxplayer;
 int order[4] = {0};
 int value;
+int mystery_cell_rounds = 0;
 
 void intro(){
 	printf("The yellow player has four (04) pieces named Y1, Y2, Y3, and Y4\n");
@@ -143,12 +144,15 @@ void movePieceFromBaseToBoard(Board* board, int playerColor) {
            pieceIndex + 1, board->players[playerColor].pieces[pieceIndex].position);
     printf("Coin toss result: Moving %s\n", (direction == 1) ? "clockwise" : "counter-clockwise");
 
+
+    
     // Update and print the new base/board status
     int piecesOnBase = piecesInBase(board, playerColor);
+    int piecesHome = PIECES_PER_PLAYER - piecesOnBase;
     printf("[Color ");
     PrintPlayer(playerColor);
     printf("] player now has %d/4 pieces on the board and %d/4 pieces on the base.\n", 
-           PIECES_PER_PLAYER - piecesInBase, piecesInBase);
+           piecesHome, piecesOnBase);
 }
 
 int generateRandomEmptyCell(Board* board) {
@@ -170,13 +174,15 @@ int generateRandomEmptyCell(Board* board) {
     // If no empty cells, return -1 or handle this case as needed
     return -1;
 }
+
+
 void updateMysteryCell(Board* board, int currentRound) {
     if (currentRound == 2) {
         // Spawn mystery cell for the first time after two rounds
         board->mystery_cell_position = generateRandomEmptyCell(board);
-        board->mystery_cell_rounds = 4;
-    } else if (board->mystery_cell_rounds > 0) {
-        board->mystery_cell_rounds--;
+        mystery_cell_rounds = 4;
+    } else if (mystery_cell_rounds > 0) {
+        mystery_cell_rounds--;
     } else {
         // Respawn mystery cell at a new location
         int newPosition;
@@ -185,7 +191,7 @@ void updateMysteryCell(Board* board, int currentRound) {
         } while (newPosition == board->mystery_cell_position);
         
         board->mystery_cell_position = newPosition;
-        board->mystery_cell_rounds = 4;
+        mystery_cell_rounds = 4;
     }
 }
 void triggerMysteryCell(Board* board, int playerColor, int pieceIndex) {
@@ -297,6 +303,31 @@ int movePieceOnBoard(Board* board, int playerColor, int pieceIndex, int diceRoll
     printf("Invalid move\n");
     return 0;  // Move not possible
 }
+int movePieceToHome(Board* board, int playerColor, int pieceIndex, int diceRoll) {
+    Piece* piece = &board->players[playerColor].pieces[pieceIndex];
+    
+    // Check if the piece is already in the home path
+    if (piece->position >= BOARD_SIZE) {
+        int currentHomePosition = piece->position - BOARD_SIZE - (playerColor * HOME_PATH_SIZE);
+        int newHomePosition = currentHomePosition + diceRoll;
+        
+        if (newHomePosition < HOME_PATH_SIZE) {
+            piece->position = BOARD_SIZE + (playerColor * HOME_PATH_SIZE) + newHomePosition;
+            printf("Piece %d of Player ", pieceIndex + 1);
+            PrintPlayer(playerColor);
+            printf(" moved to home position %d\n", newHomePosition + 1);
+            return 1; // Successful move
+        } else {
+            printf("Cannot move piece %d of Player ", pieceIndex + 1);
+            PrintPlayer(playerColor);
+            printf(". Exceeds home path.\n");
+            return 0; // Move not possible
+        }
+    }
+    
+    // If not in home path, use the existing movePieceOnBoard function
+    return movePieceOnBoard(board, playerColor, pieceIndex, diceRoll);
+}
 void determineWinner(Board* board) {
     int placings[PLAYER_COUNT] = {0};
     int currentPlace = 1;
@@ -330,7 +361,7 @@ void determineWinner(Board* board) {
 }
 void game(Board* board) {
     int round = 1;
-    while (1) {
+    while (!allPiecesHome(board)) {
         printf("\n--- Round %d ---\n", round);
         updateMysteryCell(board, round);
 
@@ -343,7 +374,7 @@ void game(Board* board) {
                 rollCount++;
                 int diceValue = RollDice();
                 PrintPlayer(currentPlayer);
-                printf(" player rolls a %d (Roll %d/3)\n", diceValue, rollCount);
+                printf(" player rolls a %d \n", diceValue);
 
                 int moved = 0;
 
@@ -394,21 +425,13 @@ void game(Board* board) {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+int allPiecesHome(Board* board) {
+    for (int i = 0; i < PLAYER_COUNT; i++) {
+        for (int j = 0; j < PIECES_PER_PLAYER; j++) {
+            if (board->players[i].pieces[j].position < BOARD_SIZE + (i * HOME_PATH_SIZE)) {
+                return 0; // If any piece is not home, return false
+            }
+        }
+    }
+    return 1; // All pieces are home
+}
